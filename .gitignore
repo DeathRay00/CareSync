@@ -1,0 +1,46 @@
+# ─── Python ──────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+env/
+venv/
+.venv/
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+*.log
+
+# ─── Backend secrets & generated files ───────────────────────────
+backend/.env
+backend/uploads/
+
+# ─── Node / Next.js ──────────────────────────────────────────────
+node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/.env.local
+frontend/.env.production
+frontend/.env.development
+
+# ─── Root .env (actual secrets) ──────────────────────────────────
+.env
+
+# ─── General ─────────────────────────────────────────────────────
+.DS_Store
+.vscode/
+*.pem
+*.key
+*.cert
+Thumbs.db
+*.swp
+*.swo
+
+# ─── Docker overrides ────────────────────────────────────────────
+docker-compose.override.yml
+
+# Docker
+*.log
+docker-compose.override.yml

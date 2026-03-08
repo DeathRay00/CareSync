@@ -1,0 +1,27 @@
+# FastAPI core
+fastapi==0.115.9
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20
+
+# Database
+sqlalchemy[asyncio]==2.0.39
+asyncpg==0.30.0
+alembic==1.14.1
+pgvector==0.3.6
+psycopg2-binary==2.9.10
+
+# Auth
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+
+# Google Gemini
+google-generativeai==0.8.4
+
+# Utilities
+python-dotenv==1.0.1
+pydantic[email]==2.10.6
+pydantic-settings==2.8.1
+pillow==11.1.0
+aiofiles==24.1.0
+httpx==0.28.1
+numpy==2.2.3
