@@ -53,7 +53,7 @@ export default function LoginPage() {
           <div className="p-2 bg-sky-500 rounded-xl">
             <Heart className="w-5 h-5 text-white" />
           </div>
-          <span className="text-xl font-bold text-slate-800">MedAssistant</span>
+          <span className="text-xl font-bold text-slate-800">SumitraRaj Hospital</span>
         </div>
 
         <h1 className="text-2xl font-bold text-slate-800 mb-1">Sign In</h1>

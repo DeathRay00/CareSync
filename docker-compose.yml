@@ -2,18 +2,18 @@ services:
   # ─── PostgreSQL + pgvector ───────────────────────────────────────────────────
   db:
     image: pgvector/pgvector:pg17
-    container_name: medassistant_db
+    container_name: SumitraRaj Hospital_db
     restart: unless-stopped
     environment:
       POSTGRES_USER: ${DB_USER:-meduser}
       POSTGRES_PASSWORD: ${DB_PASSWORD:-medpassword}
-      POSTGRES_DB: ${DB_NAME:-medassistant}
+      POSTGRES_DB: ${DB_NAME:-SumitraRaj Hospital}
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-meduser} -d ${DB_NAME:-medassistant}"]
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-meduser} -d ${DB_NAME:-SumitraRaj Hospital}"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -23,10 +23,10 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: medassistant_backend
+    container_name: SumitraRaj Hospital_backend
     restart: unless-stopped
     environment:
-      DATABASE_URL: postgresql+asyncpg://${DB_USER:-meduser}:${DB_PASSWORD:-medpassword}@db:5432/${DB_NAME:-medassistant}
+      DATABASE_URL: postgresql+asyncpg://${DB_USER:-meduser}:${DB_PASSWORD:-medpassword}@db:5432/${DB_NAME:-SumitraRaj Hospital}
       SECRET_KEY: ${SECRET_KEY:-change-this-in-production}
       ALGORITHM: HS256
       ACCESS_TOKEN_EXPIRE_MINUTES: 60
@@ -48,7 +48,7 @@ services:
       dockerfile: Dockerfile
       args:
         NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8000}
-    container_name: medassistant_frontend
+    container_name: SumitraRaj Hospital_frontend
     restart: unless-stopped
     ports:
       - "3000:3000"

@@ -19,7 +19,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="MedAssistant API",
+    title="SumitraRaj Hospital API",
     description="AI-powered Medical Assistant — Role-based patient & doctor portal",
     version="1.0.0",
     lifespan=lifespan,
@@ -52,4 +52,4 @@ app.include_router(chat.router)
 
 @app.get("/health", tags=["Health"])
 async def health_check():
-    return {"status": "ok", "service": "MedAssistant API"}
+    return {"status": "ok", "service": "SumitraRaj Hospital API"}

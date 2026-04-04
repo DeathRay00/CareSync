@@ -52,7 +52,7 @@ export function Sidebar({ role }: SidebarProps) {
         <div className={`p-2 bg-${accentColor}-500 rounded-xl`}>
           <Heart className="w-5 h-5 text-white" />
         </div>
-        <span className="text-lg font-bold text-slate-800">MedAssistant</span>
+        <span className="text-lg font-bold text-slate-800">SumitraRaj Hospital</span>
       </div>
 
       {/* User info */}
@@ -114,7 +114,7 @@ export function Sidebar({ role }: SidebarProps) {
           <div className={`p-1.5 bg-${accentColor}-500 rounded-lg`}>
             <Heart className="w-4 h-4 text-white" />
           </div>
-          <span className="font-bold text-slate-800">MedAssistant</span>
+          <span className="font-bold text-slate-800">SumitraRaj Hospital</span>
         </div>
         <button onClick={() => setMobileOpen(!mobileOpen)} className="p-2 rounded-lg hover:bg-slate-100">
           {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}

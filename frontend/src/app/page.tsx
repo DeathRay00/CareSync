@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Heart, Shield, Stethoscope } from "lucide-react";
+import {Shield, Stethoscope, User } from "lucide-react";
 
 export default function HomePage() {
   return (
@@ -7,12 +7,10 @@ export default function HomePage() {
       <div className="max-w-3xl w-full text-center space-y-8">
         {/* Logo */}
         <div className="flex items-center justify-center gap-3">
-          <div className="p-3 bg-sky-500 rounded-2xl shadow-lg">
-            <Heart className="w-8 h-8 text-white" />
-          </div>
-          <h1 className="text-4xl font-bold text-slate-800">MedAssistant</h1>
+          <img src="/logo.png" alt="Sumitraraj Hospital" width="120" />
+          <h1 className="text-4xl font-bold text-slate-800">SumitraRaj Hospital</h1>
         </div>
-
+        
         <p className="text-lg text-slate-600 max-w-xl mx-auto">
           AI-powered medical portal for patients and doctors. Manage appointments,
           prescriptions, and get instant health insights.
@@ -25,9 +23,10 @@ export default function HomePage() {
             className="group p-8 bg-white rounded-2xl shadow-md border border-sky-100 hover:shadow-xl hover:border-sky-300 transition-all duration-200 text-left"
           >
             <div className="p-3 bg-sky-100 rounded-xl w-fit mb-4 group-hover:bg-sky-200 transition-colors">
-              <Heart className="w-6 h-6 text-sky-600" />
+              <User className="w-6 h-6 text-sky-600" />
             </div>
-            <h2 className="text-xl font-semibold text-slate-800 mb-2">Patient Portal</h2>
+
+          <h2 className="text-xl font-semibold text-slate-800 mb-2">Patient Portal</h2>
             <p className="text-slate-500 text-sm">
               Book appointments, upload prescriptions, view AI-analyzed reports, and chat with your health assistant.
             </p>

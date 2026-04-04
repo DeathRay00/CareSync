@@ -6,7 +6,7 @@ import { Toaster } from "sonner";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "MedAssistant — AI-Powered Medical Portal",
+  title: "SumitraRaj Hospital — AI-Powered Medical Portal",
   description: "Role-based medical assistant with AI prescription OCR and chatbot",
 };
 

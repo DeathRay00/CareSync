@@ -53,11 +53,11 @@ export default function RegisterPage() {
           <div className="p-2 bg-sky-500 rounded-xl">
             <Heart className="w-5 h-5 text-white" />
           </div>
-          <span className="text-xl font-bold text-slate-800">MedAssistant</span>
+          <span className="text-xl font-bold text-slate-800">SumitraRaj Hospital</span>
         </div>
 
         <h1 className="text-2xl font-bold text-slate-800 mb-1">Create Account</h1>
-        <p className="text-slate-500 text-sm mb-6">Join MedAssistant today</p>
+        <p className="text-slate-500 text-sm mb-6">Join SumitraRaj Hospital today</p>
 
         {/* Role Toggle */}
         <div className="flex gap-2 mb-6 p-1 bg-slate-100 rounded-xl">

@@ -1,4 +1,4 @@
-# MedAssistant — AI-Powered Medical Web Application
+# SumitraRaj Hospital — AI-Powered Medical Web Application
 
 A full-stack, role-based medical assistant with AI-driven features powered by **Google Gemini**.
 
@@ -128,7 +128,7 @@ npm run dev
 ```
 
 **Database:** PostgreSQL 17 with pgvector must be running locally.
-Set `DATABASE_URL=postgresql+asyncpg://user:pass@localhost:5432/medassistant` in `backend/.env`.
+Set `DATABASE_URL=postgresql+asyncpg://user:pass@localhost:5432/SumitraRaj Hospital` in `backend/.env`.
 
 ---
 
