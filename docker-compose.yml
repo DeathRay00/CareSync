@@ -2,18 +2,18 @@ services:
   # ─── PostgreSQL + pgvector ───────────────────────────────────────────────────
   db:
     image: pgvector/pgvector:pg17
-    container_name: SumitraRaj Hospital_db
+    container_name: SumitraRaj_Hospital_db
     restart: unless-stopped
     environment:
       POSTGRES_USER: ${DB_USER:-meduser}
       POSTGRES_PASSWORD: ${DB_PASSWORD:-medpassword}
-      POSTGRES_DB: ${DB_NAME:-SumitraRaj Hospital}
+      POSTGRES_DB: ${DB_NAME:-SumitraRaj_Hospital}
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-meduser} -d ${DB_NAME:-SumitraRaj Hospital}"]
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-meduser} -d ${DB_NAME:-SumitraRaj_Hospital}"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -23,14 +23,15 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: SumitraRaj Hospital_backend
+    container_name: SumitraRaj_Hospital_backend
     restart: unless-stopped
     environment:
-      DATABASE_URL: postgresql+asyncpg://${DB_USER:-meduser}:${DB_PASSWORD:-medpassword}@db:5432/${DB_NAME:-SumitraRaj Hospital}
+      DATABASE_URL: postgresql+asyncpg://${DB_USER:-meduser}:${DB_PASSWORD:-medpassword}@db:5432/${DB_NAME:-SumitraRaj_Hospital}
       SECRET_KEY: ${SECRET_KEY:-change-this-in-production}
       ALGORITHM: HS256
       ACCESS_TOKEN_EXPIRE_MINUTES: 60
       GEMINI_API_KEY: ${GEMINI_API_KEY}
+      MISTRAL_API_KEY: ${MISTRAL_API_KEY}
       UPLOAD_DIR: uploads
       FRONTEND_URL: ${FRONTEND_URL:-http://localhost:3000}
     ports:
@@ -48,7 +49,7 @@ services:
       dockerfile: Dockerfile
       args:
         NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8000}
-    container_name: SumitraRaj Hospital_frontend
+    container_name: SumitraRaj_Hospital_frontend
     restart: unless-stopped
     ports:
       - "3000:3000"

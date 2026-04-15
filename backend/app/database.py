@@ -31,6 +31,6 @@ async def get_db() -> AsyncSession:
 async def init_db():
     """Create all tables and enable pgvector extension."""
     async with engine.begin() as conn:
-       # await conn.execute(__import__("sqlalchemy").text("CREATE EXTENSION IF NOT EXISTS vector"))
+        await conn.execute(__import__("sqlalchemy").text("CREATE EXTENSION IF NOT EXISTS vector"))
         from app import models  # noqa: F401 – import to register models
         await conn.run_sync(Base.metadata.create_all)

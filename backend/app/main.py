@@ -26,12 +26,10 @@ app = FastAPI(
 )
 
 # ─── CORS ─────────────────────────────────────────────────────────────────────
-_origins = [o.strip() for o in settings.FRONTEND_URL.split(",") if o.strip()]
-
+# allow all origins for local development temporarily to fix the CORS issue
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=_origins,
-    allow_origin_regex=r"https://.*\.devtunnels\.ms",
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

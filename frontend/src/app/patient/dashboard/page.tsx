@@ -24,11 +24,21 @@ const quickActions = [
 export default function PatientDashboard() {
   const { user } = useAuthStore();
   const [appointments, setAppointments] = useState<Appointment[]>([]);
+  const [prescriptionsCount, setPrescriptionsCount] = useState<number | string>("—");
+  const [reportsCount, setReportsCount] = useState<number | string>("—");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    api.get("/api/appointments/")
-      .then((res) => setAppointments(res.data.slice(0, 5)))
+    Promise.all([
+      api.get("/api/appointments/"),
+      api.get("/api/prescriptions/"),
+      api.get("/api/reports/")
+    ])
+      .then(([apptsRes, rxRes, reportsRes]) => {
+        setAppointments(apptsRes.data.slice(0, 5));
+        setPrescriptionsCount(rxRes.data.length);
+        setReportsCount(reportsRes.data.length);
+      })
       .catch(() => {})
       .finally(() => setLoading(false));
   }, []);
@@ -50,9 +60,9 @@ export default function PatientDashboard() {
       {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard label="Upcoming Appointments" value={upcomingCount} icon={Calendar} color="text-sky-500 bg-sky-50" />
-        <StatCard label="Prescriptions" value="—" icon={FileText} color="text-indigo-500 bg-indigo-50" />
-        <StatCard label="Reports Uploaded" value="—" icon={Upload} color="text-emerald-500 bg-emerald-50" />
-        <StatCard label="Last AI Chat" value="—" icon={MessageCircle} color="text-violet-500 bg-violet-50" />
+        <StatCard label="Prescriptions" value={prescriptionsCount} icon={FileText} color="text-indigo-500 bg-indigo-50" />
+        <StatCard label="Reports Uploaded" value={reportsCount} icon={Upload} color="text-emerald-500 bg-emerald-50" />
+        <StatCard label="Last AI Chat" value="New" icon={MessageCircle} color="text-violet-500 bg-violet-50" />
       </div>
 
       {/* Quick Actions */}

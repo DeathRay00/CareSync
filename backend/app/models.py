@@ -123,8 +123,8 @@ class DocumentEmbedding(Base):
     report_id = Column(UUID(as_uuid=True), ForeignKey("medical_reports.id"), nullable=True)
     source_type = Column(SAEnum(SourceType), nullable=False)
     content_text = Column(Text, nullable=False)
-    # 768-dimensional embedding (Gemini text-embedding-004)
-    embedding = Column(Vector(768), nullable=True)
+    # 1024-dimensional embedding (Mistral-embed)
+    embedding = Column(Vector(1024), nullable=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
     patient = relationship("User", back_populates="embeddings")

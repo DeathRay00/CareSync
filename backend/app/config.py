@@ -10,6 +10,7 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
 
     GEMINI_API_KEY: str
+    MISTRAL_API_KEY: str
 
     UPLOAD_DIR: str = "uploads"
     FRONTEND_URL: str = "http://localhost:3000"

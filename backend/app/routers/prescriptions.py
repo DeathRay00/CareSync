@@ -7,7 +7,7 @@ Prescription router — handles:
 """
 import os
 import uuid
-from typing import List
+from typing import List, Optional
 
 import aiofiles
 from fastapi import APIRouter, Depends, File, HTTPException, UploadFile, status
@@ -98,14 +98,18 @@ async def create_prescription(
 async def list_prescriptions(
     db: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user),
+    patient_id: Optional[uuid.UUID] = None
 ):
+    query = select(Prescription)
     if current_user.role.value == "patient":
-        condition = Prescription.patient_id == current_user.id
+        query = query.where(Prescription.patient_id == current_user.id)
+    elif patient_id:
+        query = query.where(Prescription.patient_id == patient_id)
     else:
-        condition = Prescription.doctor_id == current_user.id
+        query = query.where(Prescription.doctor_id == current_user.id)
 
     result = await db.execute(
-        select(Prescription).where(condition).order_by(Prescription.created_at.desc())
+        query.order_by(Prescription.created_at.desc())
     )
     return result.scalars().all()
 

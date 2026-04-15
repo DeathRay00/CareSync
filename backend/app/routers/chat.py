@@ -16,7 +16,8 @@ from app.auth import require_role
 from app.database import get_db
 from app.models import DocumentEmbedding, User
 from app.schemas import ChatMessage, ChatResponse
-from app.services.gemini_service import chat_with_context, generate_query_embedding
+# Now using the updated mistral_service instead of gemini_service
+from app.services.mistral_service import chat_with_context, generate_query_embedding
 
 router = APIRouter(prefix="/api/chat", tags=["Chatbot"])
 

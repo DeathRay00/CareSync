@@ -32,6 +32,8 @@ export default function DoctorDashboard() {
     (a) => new Date(a.datetime).toDateString() === today
   );
   const pendingCount = appointments.filter((a) => a.status === "pending").length;
+  // Calculate unique patients from appointments
+  const uniquePatientsCount = new Set(appointments.map(a => a.patient?.name)).size;
 
   return (
     <div className="space-y-8">
@@ -48,7 +50,7 @@ export default function DoctorDashboard() {
         <StatCard label="Today's Appointments" value={todayAppts.length} icon={Calendar} color="text-indigo-500 bg-indigo-50" />
         <StatCard label="Pending Requests" value={pendingCount} icon={Clock} color="text-amber-500 bg-amber-50" />
         <StatCard label="Total Appointments" value={appointments.length} icon={FileText} color="text-sky-500 bg-sky-50" />
-        <StatCard label="Patients" value="—" icon={Users} color="text-emerald-500 bg-emerald-50" />
+        <StatCard label="Patients" value={uniquePatientsCount} icon={Users} color="text-emerald-500 bg-emerald-50" />
       </div>
 
       {/* Quick Actions */}

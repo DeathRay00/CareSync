@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 import uuid
 
 from fastapi import APIRouter, Depends, HTTPException, status
@@ -49,17 +49,19 @@ async def create_appointment(
 async def list_appointments(
     db: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user),
+    patient_id: Optional[uuid.UUID] = None
 ):
+    query = select(Appointment).options(selectinload(Appointment.patient), selectinload(Appointment.doctor))
+
     if current_user.role.value == "patient":
-        condition = Appointment.patient_id == current_user.id
+        query = query.where(Appointment.patient_id == current_user.id)
+    elif patient_id:
+        query = query.where(Appointment.patient_id == patient_id)
     else:
-        condition = Appointment.doctor_id == current_user.id
+        query = query.where(Appointment.doctor_id == current_user.id)
 
     result = await db.execute(
-        select(Appointment)
-        .options(selectinload(Appointment.patient), selectinload(Appointment.doctor))
-        .where(condition)
-        .order_by(Appointment.datetime)
+        query.order_by(Appointment.datetime)
     )
     return result.scalars().all()
 

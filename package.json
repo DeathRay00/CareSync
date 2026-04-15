@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/DeathRay00/CareSync/issues"
   },
-  "homepage": "https://github.com/DeathRay00/CareSync#readme"
+  "homepage": "https://github.com/DeathRay00/CareSync#readme",
+  "dependencies": {
+    "react-markdown": "^10.1.0"
+  }
 }

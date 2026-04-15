@@ -1,0 +1,45 @@
+# External Mentor Suggestions Report
+
+**Project Name:** Mini Project Ketki
+**Date of Submission:** [Insert Submission Date Here]
+
+## Overview
+This report outlines the technical and architectural suggestions provided by the external mentor during the project review and details the current implementation status of each suggestion in the application.
+
+---
+
+## Suggestions and Implementation Status
+
+### 1. Implement Role-Based Access Control (RBAC) for Doctors and Patients
+**Status:** **Implemented**
+*Details:* Separate routing, authentication, and dashboards have been successfully created for Doctors and Patients. The frontend utilizes distinct layouts (`doctor/layout.tsx` and `patient/layout.tsx`), and the FastAPI backend enforces secure role-based authentication.
+
+### 2. Integrate AI for Smart Chat and Medical Assistance
+**Status:** **Implemented**
+*Details:* Integrated Google's Gemini LLM (via `gemini_service.py`) to provide an intelligent chat interface for patients (`chat/page.tsx`). This allows users to request basic guidance and securely interact with the AI assistant.
+
+### 3. Containerize the Application for Easier Deployment and Testing
+**Status:** **Implemented**
+*Details:* Dockerized both the Next.js frontend and the FastAPI backend. A `docker-compose.yml` file was configured to orchestrate the multi-container setup, ensuring consistent environments across development and production.
+
+### 4. Digital Prescription and Medical Report Management
+**Status:** **Partially Implemented**
+*Details:* The core workflow for doctors to prescribe medications and patients to view their prescriptions and upload reports has been completed. However, the functionality to export these prescriptions as downloadable PDF documents is currently in progress.
+
+### 5. Automated Email/SMS Notifications for Appointments
+**Status:** **Not Implemented**
+*Details:* Due to current time constraints and the primary scope of the mini-project, automated email or SMS notifications (e.g., using SMTP/Twilio) for appointment confirmations and reminders have been deferred to future iterations.
+
+---
+
+**Student Name & Signature:**
+
+___________________________
+*[Type Your Name Here]*
+
+
+
+**Project Guide Name & Signature:**
+
+___________________________
+*[Type Guide's Name Here]*
