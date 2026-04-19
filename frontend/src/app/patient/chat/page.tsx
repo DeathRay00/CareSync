@@ -45,10 +45,13 @@ export default function PatientChatPage() {
         { role: "assistant", content: res.data.reply, context: res.data.context_used },
       ]);
     } catch {
-      toast.error("Failed to get a response");
+      toast.error("Failed to get a response from the backend chat service");
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: "Sorry, I encountered an error. Please try again." },
+        {
+          role: "assistant",
+          content: "Sorry, I encountered an error while contacting the backend chat service. Please try again.",
+        },
       ]);
     } finally {
       setLoading(false);
