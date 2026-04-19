@@ -16,5 +16,15 @@
   "bugs": {
     "url": "https://github.com/DeathRay00/CareSync/issues"
   },
-  "homepage": "https://github.com/DeathRay00/CareSync#readme"
+  "homepage": "https://github.com/DeathRay00/CareSync#readme",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "multer": "^2.1.1",
+    "node-fetch": "^3.3.2",
+    "pdf-parse": "^2.4.5",
+    "tesseract.js": "^7.0.0"
+  }
 }

@@ -4,6 +4,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
+from dotenv import load_dotenv
+load_dotenv()
+
 from app.config import settings
 from app.database import init_db
 from app.routers import auth, appointments, users, prescriptions, reports, chat
@@ -30,7 +33,7 @@ _origins = [o.strip() for o in settings.FRONTEND_URL.split(",") if o.strip()]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=_origins,
+    allow_origins=["*"],
     allow_origin_regex=r"https://.*\.devtunnels\.ms",
     allow_credentials=True,
     allow_methods=["*"],

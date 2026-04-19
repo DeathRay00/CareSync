@@ -15,9 +15,10 @@ from app.config import settings
 genai.configure(api_key=settings.GEMINI_API_KEY)
 
 # Models
-VISION_MODEL = "gemini-1.5-flash"          # multimodal (image + text)
-TEXT_MODEL = "gemini-1.5-flash"            # fast text
-EMBEDDING_MODEL = "models/text-embedding-004"  # 768-dim
+VISION_MODEL = "gemini-2.5-flash-lite"          # multimodal (image + text)
+TEXT_MODEL = "gemini-2.5-flash-lite"            # fast text
+EMBEDDING_MODEL = "models/gemini-embedding-001"
+EMBEDDING_DIMENSIONS = 768
 
 
 # ─── Prescription OCR ─────────────────────────────────────────────────────────
@@ -89,6 +90,7 @@ async def generate_embedding(text: str) -> list[float]:
         model=EMBEDDING_MODEL,
         content=text,
         task_type="RETRIEVAL_DOCUMENT",
+        output_dimensionality=EMBEDDING_DIMENSIONS,
     )
     return result["embedding"]
 
@@ -99,6 +101,7 @@ async def generate_query_embedding(text: str) -> list[float]:
         model=EMBEDDING_MODEL,
         content=text,
         task_type="RETRIEVAL_QUERY",
+        output_dimensionality=EMBEDDING_DIMENSIONS,
     )
     return result["embedding"]
 
