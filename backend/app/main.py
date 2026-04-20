@@ -6,7 +6,7 @@ from fastapi.staticfiles import StaticFiles
 
 from app.config import settings
 from app.database import init_db
-from app.routers import auth, appointments, users, prescriptions, reports, chat
+from app.routers import auth, appointments, users, prescriptions, reports, chat, agents
 import os
 
 
@@ -46,6 +46,7 @@ app.include_router(appointments.router)
 app.include_router(prescriptions.router)
 app.include_router(reports.router)
 app.include_router(chat.router)
+app.include_router(agents.router)
 
 
 @app.get("/health", tags=["Health"])

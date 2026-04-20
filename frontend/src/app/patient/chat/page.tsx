@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Send, Loader2, MessageCircle, Sparkles, User } from "lucide-react";
 import { toast } from "sonner";
+import ReactMarkdown from "react-markdown";
 import api from "@/lib/api";
 import { useAuthStore } from "@/store/authStore";
 import { cn } from "@/lib/utils";
@@ -18,7 +19,7 @@ export default function PatientChatPage() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: `Hello ${user?.name?.split(" ")[0] || "there"}! I'm your AI medical assistant. I have access to your medical reports and prescriptions. How can I help you today?`,
+      content: `Hello ${user?.name?.split(" ")[0] || "there"}! I'm your AI medical assistant.How can I help you today?`,
     },
   ]);
   const [input, setInput] = useState("");
@@ -102,13 +103,13 @@ export default function PatientChatPage() {
               <div className={cn("max-w-[80%] space-y-1", msg.role === "user" ? "items-end" : "items-start")}>
                 <div
                   className={cn(
-                    "px-4 py-3 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap",
+                    "px-4 py-3 rounded-2xl text-sm leading-relaxed",
                     msg.role === "user"
-                      ? "bg-sky-500 text-white rounded-tr-sm"
-                      : "bg-slate-50 text-slate-800 rounded-tl-sm border border-slate-100"
+                      ? "bg-sky-500 text-white rounded-tr-sm whitespace-pre-wrap"
+                      : "bg-slate-50 text-slate-800 rounded-tl-sm border border-slate-100 prose prose-slate prose-sm max-w-none break-words"
                   )}
                 >
-                  {msg.content}
+                  {msg.role === "user" ? msg.content : <ReactMarkdown>{msg.content}</ReactMarkdown>}
                 </div>
                 {msg.context && msg.context.length > 0 && (
                   <p className="text-xs text-slate-400 pl-1">

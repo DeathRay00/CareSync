@@ -11,6 +11,7 @@ class Settings(BaseSettings):
 
     GEMINI_API_KEY: str
     MISTRAL_API_KEY: str
+    GROQ_API_KEY: str
 
     UPLOAD_DIR: str = "uploads"
     FRONTEND_URL: str = "http://localhost:3000"

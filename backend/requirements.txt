@@ -1,3 +1,6 @@
+crewai
+langchain-groq
+langchain-mistralai
 aiofiles==24.1.0
 alembic==1.14.1
 annotated-types==0.7.0
