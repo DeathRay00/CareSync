@@ -87,7 +87,7 @@ class Prescription(Base):
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     patient_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
     doctor_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=True)
-    medication_details = Column(JSON, nullable=True)   # structured JSON from Gemini or doctor
+    medication_details = Column(JSON, nullable=True)   # structured JSON from AI or doctor
     raw_text = Column(Text, nullable=True)             # raw OCR text
     is_uploaded_image = Column(Boolean, default=False, nullable=False)
     image_url = Column(String(500), nullable=True)

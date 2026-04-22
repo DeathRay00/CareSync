@@ -1,6 +1,6 @@
 """
 Prescription router — handles:
-  POST /api/prescriptions/upload-image  (patient uploads handwritten image → Gemini OCR)
+  POST /api/prescriptions/upload-image  (patient uploads handwritten image)
   POST /api/prescriptions/              (doctor writes digital prescription)
   GET  /api/prescriptions/              (list for current user)
   GET  /api/prescriptions/{id}          (detail)
@@ -19,7 +19,6 @@ from app.config import settings
 from app.database import get_db
 from app.models import Prescription, User
 from app.schemas import PrescriptionCreate, PrescriptionOut
-from app.services.gemini_service import extract_prescription_from_image
 
 router = APIRouter(prefix="/api/prescriptions", tags=["Prescriptions"])
 
@@ -48,8 +47,11 @@ async def upload_prescription_image(
     async with aiofiles.open(filepath, "wb") as f:
         await f.write(image_bytes)
 
-    # Gemini OCR
-    extracted = await extract_prescription_from_image(image_bytes, file.content_type)
+    # File upload success, but AI extraction is disabled
+    extracted = {
+        "raw_text": "Extracted text unavailable. AI OCR disabled.",
+        "medicines": []
+    }
 
     prescription = Prescription(
         patient_id=current_user.id,

@@ -5,7 +5,7 @@ Chatbot router — RAG-based conversational endpoint.
 Flow:
   1. Embed user message (query embedding)
   2. Query pgvector for top-3 relevant chunks for this patient
-  3. Feed chunks + question to Gemini
+  3. Feed chunks + question to AI model
   4. Return response
 """
 from fastapi import APIRouter, Depends

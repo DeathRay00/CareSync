@@ -1,6 +1,6 @@
 """
 Medical Reports router — handles:
-  POST /api/reports/upload  (patient uploads PDF or image → Gemini analysis + embedding stored)
+  POST /api/reports/upload  (patient uploads PDF or image → Analysis + embedding stored)
   GET  /api/reports/        (list reports for current patient)
   GET  /api/reports/{id}    (detail — doctor or the owner patient)
 """
